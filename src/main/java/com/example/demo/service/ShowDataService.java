@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.ShowDataDao;
+import com.example.demo.entity.PointVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,19 @@ import java.util.List;
 @Service
 public class ShowDataService {
 
-    @Autowired
+    @Autowired(required = false)
     private ShowDataDao showDataDao;
 
-    public List<Integer> listTrajectory(){
-        return showDataDao.list();
+    public List<PointVo> listTrajectory(){
+        return showDataDao.listTrajectory();
+    }
+
+    public void batchInsert(List<PointVo> pointVos){
+        showDataDao.batchInsert(pointVos);
+    }
+
+    public void deleteAll(){
+        showDataDao.deleteAll();
     }
 
 

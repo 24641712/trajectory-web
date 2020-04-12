@@ -14,7 +14,11 @@ import java.util.List;
 @Mapper
 public interface ShowDataDao {
 
-    List<Integer> list();
+    List<PointVo> listTrajectory();
+
+    void deleteAll();
+
+    int batchInsert(List<PointVo> list);
 
 
 }

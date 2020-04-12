@@ -18,5 +18,10 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("upload")
+    public String getUpload(){
+        return "UploadTrajectory";
+    }
+
 
 }
