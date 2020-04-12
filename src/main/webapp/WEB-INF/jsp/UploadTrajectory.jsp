@@ -3,15 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>首页</title>
+    <title>上传数据</title>
 
 </head>
 <body>
 
-   展示首页内容
-   <a href="/upload">导入数据</a>
-   <a href="/data">展示轨迹数据</a>
-
+<form action="/batchInsert" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"><br><br>
+    <input type="text" name="number"><br><br>
+    <input type="submit" value="上传">
+</form>
 
 </body>
 
