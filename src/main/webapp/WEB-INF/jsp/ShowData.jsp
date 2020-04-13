@@ -13,7 +13,7 @@
     <title>数据展示</title>
 
     <script src="http://webapi.amap.com/loca?key=4ee7322d13aead8173d8066de2708736"></script>
-    <script src="${cp}/static/js/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <a href="${cp}">返回首页</a><br>
@@ -29,9 +29,10 @@
     $(function () {
         $.ajax({
             type: "post",
-            url: "${cp}/user/getalluser.do",
+            url: "/uid",
             success: function (data) {
                 var obj = JSON.parse(data);
+                console.log(obj);
                 var datas = obj.datas;
                 for (var i = 0; i < datas.length; i++) {
                     $('#user_code').append("<option value='" + datas[i].uid + "' >" + datas[i].uid + "</option>");
@@ -45,8 +46,7 @@
     var loca = Loca.create('map', {
         mapStyle: 'amap://styles/whitesmoke',
         zoom: 10,
-        center:[116.407394,39.904211],
-
+        center:[116.326236,39.995805],
 
     });
     var layer = Loca.visualLayer({
@@ -58,9 +58,10 @@
     var alldatas = [];
 
     function getData() {
+        console.log("123")
         var usernumber = $('#user_code').val();
         $.ajax({
-            url: "/data/showdata.do?usernumber="+usernumber,
+            url: "/listData",
             type: "POST",
             /**
              *必须false才会自动加上正确的Content-Type
@@ -72,17 +73,17 @@
              */
             processData: false,
             success: function (data) {
-
                 var obj = JSON.parse(data);
                 var datas = obj.datas;
 
                 for(var i = 0;i<datas.length;i++) {
                     var tempjson={};
                     var lat = datas[i].latitude;
-                    var longt = datas[i].longitude;
+                    var longt = datas[i].longtitude;
                     var temp =[];
                     temp[1] = lat;
                     temp[0] = longt;
+                    console.log(temp);
                     tempjson.lnglat=temp;
                     tempjson.name="西城区";
                     tempjson.style="2";
@@ -110,9 +111,6 @@
             }
         });
     }
-
-
-
 
     // 传入原始数据
     console.log(alldatas);
