@@ -27,6 +27,10 @@ public class ShowDataService {
         showDataDao.batchInsert(pointVos);
     }
 
+    public int insert(PointVo pointVo){
+        return showDataDao.insert(pointVo);
+    }
+
     public void deleteAll(){
         showDataDao.deleteAll();
     }

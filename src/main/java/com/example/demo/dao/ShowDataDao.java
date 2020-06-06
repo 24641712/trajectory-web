@@ -2,6 +2,8 @@ package com.example.demo.dao;
 
 import com.example.demo.entity.PointVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -18,7 +20,9 @@ public interface ShowDataDao {
 
     void deleteAll();
 
-    int batchInsert(List<PointVo> list);
+    int batchInsert(@Param("list") List<PointVo> list);
+
+    int insert(@Param("pointVo") PointVo pointVo);
 
 
 }

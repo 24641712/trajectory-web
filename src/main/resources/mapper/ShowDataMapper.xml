@@ -20,6 +20,11 @@
         
     </insert>
 
+    <insert id="insert" parameterType="com.example.demo.entity.PointVo">
+               INSERT INTO tb_data(id,longtitude,latitude) VALUES
+               (#{pointVo.id},#{pointVo.longtitude},#{pointVo.latitude})
+    </insert>
+
     <delete id="deleteAll">
         delete from tb_data;
     </delete>

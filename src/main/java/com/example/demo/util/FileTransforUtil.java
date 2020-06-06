@@ -44,7 +44,44 @@ public class FileTransforUtil {
         return pointVoList;
     }
 
-
-
+    public static List<PointVo> readFolderByLines(File folder) throws IOException
+    {
+        List<PointVo> pointVoList = new ArrayList<>();
+        PointVo pointVo = null;
+        File[] files = folder.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                String filename = pathname.getName();
+                if(filename.endsWith(".plt")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        });
+        int id = 1;
+        int fileCount = 1;
+        for(File file : files){
+            if((fileCount++)>80){
+                break;
+            }
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String temp = "";
+            int skip = 0;
+            while((temp = reader.readLine())!=null){
+                if((skip++)<6){
+                    continue;
+                }
+                String[] strings = temp.split(",");
+                pointVo = new PointVo();
+                pointVo.setId(id++);
+                pointVo.setUid(1);
+                pointVo.setLongtitude(new BigDecimal(strings[1]));
+                pointVo.setLatitude(new BigDecimal(strings[0]));
+                pointVoList.add(pointVo);
+            }
+        }
+        return pointVoList;
+    }
 
 }

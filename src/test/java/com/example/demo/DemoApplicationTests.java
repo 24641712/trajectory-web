@@ -53,6 +53,18 @@ class DemoApplicationTests {
     }
 
     @Test
+    public void insert(){
+        showDataService.deleteAll();
+        PointVo pointVo = new PointVo();
+        pointVo.setId(1);
+        pointVo.setUid(1);
+        pointVo.setLatitude(new BigDecimal(1));
+        pointVo.setLongtitude(new BigDecimal(1));
+        showDataService.insert(pointVo);
+
+    }
+
+    @Test
     public void deleteAll(){
         showDataService.deleteAll();
 

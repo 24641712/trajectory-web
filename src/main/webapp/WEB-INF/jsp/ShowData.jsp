@@ -44,9 +44,9 @@
         });
     });
     var loca = Loca.create('map', {
-        mapStyle: 'amap://styles/whitesmoke',
-        zoom: 10,
-        center:[116.326236,39.995805],
+        mapStyle: 'amap://styles/whitesmoke',  //设置地图的显示样式
+        zoom: 10,   //设置地图的缩放级别
+        center:[116.305468,40.015322],
 
     });
     var layer = Loca.visualLayer({
